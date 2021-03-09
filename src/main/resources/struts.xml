@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	  <!--設定是否為開發模式-->
+	  <!--設定 value="true"時，對於配置文件及JAVA文件的修改，會自動載入更新，不用重新啟動伺服器 -->
+	  <!--預設為false -->
+	  <constant name="struts.devMode" value="true" />
+	  <!--以下設定全域範圍的國際化資源檔，檔名globalMessages起頭，如globalMessages_zh_TW.properties-->
+	  <!--globalMessages名稱可自取 -->
+	  <!--無預設值 -->
+	  <constant name="struts.custom.i18n.resources" value="globalMessages" />
+
+	  <!--【※※ 以下皆保持預設即可 ※※】 -->	
+	  <!--設置Struts2是否支持動態方法呼叫 --><!--預設為true -->
+	  <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	  <!--更改action的副檔名 --><!--預設為.action -->
+	  <constant name="struts.action.extension" value="gg,action,do,htm" />
+	  <!--相當於調用req.setCharacterEncoding("UTF-8")方法 --><!--預設為UTF-8 -->
+	  <constant name="struts.i18n.encoding" value="UTF-8" />
+      <!--value可為 xhtml 或 simple 或 css_xhtml --> <!--預設為xhtml -->
+      <constant name="struts.ui.theme" value="xhtml" />
+      <!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭  -->  
+      <constant name="struts.serve.static.browserCache" value="false" />  
+      
+      <!-- 进行扫描的根包，该包会被扫描成action -->
+      <constant name="struts.convention.action.packages" value="com.ctbc.controller.user"/>
+     
+      <!-- Convention默認掃描的package關鍵字(struts,struts2,action,actions)，
+           如 com.example.'actions'.MainAction 會被掃描 參考：http://www.cnblogs.com/niloay/p/struts2-convention.html -->
+      <constant name="struts.convention.package.locators" value="action,actions,struts,struts2"/>
+     
+      <!--加入 Spring -->    
+<!--       <constant name="struts.objectFactory" value="spring"/>指定Struts 2默认的ObjectFactory Bean，该属性默认值是spring  -->
+      <!-- 參考：http://www.360doc.com/content/09/0509/14/61497_3430830.shtml -->
+<!--       <constant name="struts.objectFactory.spring.autoWire" value="name"/>指定spring框架的装配模式装配方式有: name, type, auto, and constructor (name 是默认装配模式)   -->
+    
+<!-- 	<package name="empPackage" namespace="/myNamespace" extends="struts-default"> -->
+		
+		<!-- 以下的 <global-results> 與 <global-exception-mappings> 適用於此 package 內所 acton -->
+		<!-- 在執行中如果出現 Exception 時會導向根目錄的 error.jsp， 然後由 error.jsp 顯示 500堆疊 -->
+		<!-- 此設定可有可無，不一定要設  -->
+<!-- 		<global-results> -->
+<!-- 			<result name="error">/error.jsp</result> -->
+<!-- 		</global-results> -->
+
+<!-- 		<global-exception-mappings> -->
+<!-- 			<exception-mapping exception="java.lang.Exception" result="error"/> -->
+<!-- 		</global-exception-mappings> -->
+
+<!-- 		<action name="myAction" class="emp_action" method="addEmp"> -->
+<!-- 			<result name="success">/WEB-INF/success.jsp</result> -->
+<!-- 		</action> -->
+
+<!-- 	</package> -->
+
+<!-- 	<package name="userPackage" namespace="/userLoginNS" extends="struts-default"> -->
+<!-- 		<action name="login" class="user_action"> -->
+<!-- 			<result name="success">/WEB-INF/success.jsp</result> -->
+<!-- 			<result name="input">/userLogin.jsp</result> -->
+<!-- 		</action> -->
+<!-- 	</package> -->
+</struts>
+
+<!-- <constant> 說明 -->
+<!-- 說明1. <constant> 是用來覆寫 Struts2 中的 intelligent defaults (智慧型預設值)，提供事前的預設設定，讓開發者方便系統開發-->
+<!-- 說明2. intelligent defaults(智慧型預設值)可以在 WEB-INF\lib\struts2-core-xxx.jar 中的 org.apache.struts2 套件底下的 default.properties 檔案內找到 -->
+
+
+<!-- **************************************************************** -->
+<!-- *** 參考 : http://www.cnblogs.com/Seanit/p/4620743.html********* -->
+<!-- **************************************************************** -->
+
+ <!-- 不进行扫描的包，用，分割，被包含的包，将不会被扫描成为action -->
+<!--  <constant name="struts.convention.exclude.packages" value="com.sean.service" /> -->
+ <!-- 进行扫描的根包，该包会被扫描成action -->
+<!--  <constant name="struts.convention.action.packages" value="com.sean.action" /> -->
+ <!-- 返回页面地址 -->
+<!--  <constant name="struts.convention.result.path" value="/WEB-INF/content/" /> -->
+ <!-- 用于进行action查找的后缀 -->
+<!--  <constant name="struts.convention.action.suffix" value="Action" /> -->
+ <!--用于生成action名字时的分隔符，比如DemoCustAction会被映射成为demo_cust,同时用于形成返回文件，比如访问DemoAction，return的值为input，插件会去指定不睦下，查找demo_input.jsp文件 -->
+<!--  <constant name="struts.convention.action.name.separator" value="_" /> -->
+ <!-- 指定的包会被进行扫描 -->
+<!--  <constant name="struts.convention.package.locators" value="action,actions,struts,struts2" /> -->
+ <!-- 返回页面类型 -->
+<!--  <constant name="struts.convention.relative.result.types" value="dispatcher,velocity,freemarker" /> -->
+ <!-- 开启动态调用函数，这个方法在struts2里面不推荐，可是在这里却可以实现动态方法的调用，不用自写action了 -->
+<!--  <constant name="struts.enable.DynamicMethodInvocation" value="true" /> -->
+ <!-- 开发模式 -->
+<!--  <constant name="struts.devMode" value="true" /> -->
+
+
+ 
